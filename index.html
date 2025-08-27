@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Mary Nirmala Thomas — Portfolio</title>
   <style>
+    /* General Body Styles */
     body {
       font-family: Arial, sans-serif;
       margin: 0;
@@ -14,55 +15,109 @@
       line-height: 1.6;
     }
 
+    /* Header Styles */
     header {
       background-color: #d9d1e2;
       text-align: center;
       padding: 3rem 1rem;
     }
-
     header h1 {
       margin: 0;
       font-size: 2.5rem;
       color: #5f5d58;
     }
-
     header p {
       font-size: 1.2rem;
       margin-top: 0.5rem;
       color: #5f5d58;
     }
 
+    /* Navigation Bar */
     nav {
       background-color: #f7f4ef;
       display: flex;
       justify-content: center;
       gap: 1.5rem;
       padding: 1rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
     }
-
     nav a {
       text-decoration: none;
       color: #5f5d58;
       font-weight: bold;
+      transition: color 0.3s ease;
+    }
+    nav a:hover {
+      color: #bca9d4;
     }
 
+    /* Main Content */
     main {
       max-width: 900px;
       margin: 2rem auto;
       padding: 0 1rem;
     }
-
     section {
       margin-bottom: 3rem;
     }
-
     h2 {
       color: #5f5d58;
       border-bottom: 2px solid #d9d1e2;
       padding-bottom: 0.3rem;
-      margin-bottom: 1rem;
+      margin-bottom: 1.5rem;
     }
 
+    /* Table Styles */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background-color: #fdf9f6;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+    table th, table td {
+      padding: 15px;
+      text-align: left;
+      vertical-align: top;
+    }
+    table th {
+      background-color: #f7f4ef;
+      color: #5f5d58;
+      font-weight: bold;
+      border-bottom: 2px solid #d9d1e2;
+    }
+    table tr {
+      border-bottom: 1px solid #f0e9e1;
+    }
+    table tr:last-child {
+      border-bottom: none;
+    }
+    table tr:hover {
+      background-color: #f7f4ef;
+    }
+    table img.logo {
+      width: 45px;
+      height: 45px;
+      object-fit: contain;
+      border-radius: 8px;
+      vertical-align: middle;
+      margin-right: 12px;
+      background: white;
+      padding: 2px;
+    }
+    table td ul {
+      padding-left: 20px;
+      margin-top: 0;
+    }
+    table td ul li {
+      margin-bottom: 0.5rem;
+    }
+
+    /* Button and Card Styles */
     .btn {
       display: inline-block;
       background-color: #d9d1e2;
@@ -72,17 +127,11 @@
       color: #5f5d58;
       border-radius: 6px;
       font-weight: bold;
+      transition: background-color 0.3s ease;
     }
-
-    ul {
-      list-style-type: none;
-      padding: 0;
+    .btn:hover {
+        background-color: #c8bdd9;
     }
-
-    ul li {
-      margin: 0.5rem 0;
-    }
-
     .card {
       background-color: #f7f4ef;
       padding: 1rem;
@@ -91,20 +140,55 @@
       border-left: 4px solid #d9d1e2;
     }
 
+    /* Footer Styles */
     footer {
       background-color: #d9d1e2;
       text-align: center;
       padding: 2rem 1rem;
       color: #5f5d58;
     }
-
     footer h2 {
       border: none;
       margin-bottom: 1rem;
     }
-
     footer p {
       margin: 0.3rem 0;
+    }
+
+    /* Responsive Design */
+    @media(max-width: 768px) {
+        table, thead, tbody, th, td, tr {
+            display: block;
+        }
+        thead tr {
+            position: absolute;
+            top: -9999px;
+            left: -9999px;
+        }
+        tr {
+            margin-bottom: 1rem;
+            border: 1px solid #d9d1e2;
+            border-radius: 8px;
+        }
+        td {
+            border: none;
+            border-bottom: 1px solid #f0e9e1;
+            position: relative;
+            padding-left: 50%;
+        }
+        td:before {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            width: 45%;
+            padding-right: 10px;
+            white-space: nowrap;
+            font-weight: bold;
+        }
+        /* Labeling the cells for mobile view */
+        td:nth-of-type(1):before { content: "Institution"; }
+        td:nth-of-type(2):before { content: "Details"; }
+        td:nth-of-type(3):before { content: "Duration"; }
     }
   </style>
 </head>
@@ -116,7 +200,8 @@
 
   <nav>
     <a href="#about">About</a>
-    <a href="#experience">Experience</a>
+    <a href="#work-experience">Work</a>
+    <a href="#research-experience">Research</a>
     <a href="#education">Education</a>
     <a href="#skills">Skills</a>
     <a href="#contact">Contact</a>
@@ -129,81 +214,108 @@
       <a href="MaryThomas_CV.pdf" download class="btn">Download CV</a>
     </section>
 
-    <section id="work experience">
-    <h2>Work Experience</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>Role / Institution</th>
-          <th>Details</th>
-          <th>Duration</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>
-                   Sri Ramachandra Medical College and Research Institute. <br><br>
-            <strong>Summer Intern</strong>
-          </td>
-          <td>
-            <ul>
-              <li><b>Pediatric Hemato-Oncology Unit</b> – Rotated with physicians in charge of pediatric cancer care,
-interacting directly with patients and families. Learned to take detailed medical histories,
-understand pathophysiology, and discuss management strategies for various childhood cancers.</li>
-              <li><b>Karthikeyan’s Child Developmental Unit</b> – Observed detailed family history-taking to establish
-differentials for developmental and neuropsychiatric disorders. Gained exposure to patients with
-autism spectrum disorder, Fragile X syndrome, ADHD, depression, and other developmental
-conditions. Watched the administration of developmental milestone assessments for delay
-detection.</li>
-              <li><b>Fetal–Maternal Unit</b> – Observed transabdominal and transvaginal ultrasounds, anomaly scans,
-and amniocentesis procedures. Studied detection of fetal anomalies via imaging and gained
-insight into high-risk pregnancy management.</li>
-              <li><b>Genetic and Metabolic Clinic</b> – Learned in-depth genetic counseling approaches through review
-and analysis of old patient reports. Interpreted genetic and metabolic test results for neonates
-and discussed implications for family counseling. Visited the NICU to analyze reports of
-premature infants and observe treatment protocols, including those for severe combined
-immunodeficiency (SCID). Learned and observed the procedure for delivering a baby in distress,
-alongside normal delivery techniques.</li>
-              <li><b>Genetic Diagnostic Laboratory </b>– Performed genetic testing on patient samples, including
-peripheral and cord blood culture, peripheral blood harvest, fluorescence in situ hybridization
-(FISH), DNA isolation, PCR, and agarose gel electrophoresis, karyotyping using iKaros</li>
-            </ul>
-          </td>
-          <td>May 2025 - July 2025</td>
-        </tr>
-      </tbody>
-    </table>
-  </section>
-  <section>
-    <h2>Reseach Experience</h2>
-      </div>
-      <div class="card">
-        <h3>Research Assistant — Centre for Bio-Separation & Technology, VIT</h3>
-        <small>July 2025 – Present</small>
-        <p>Studying protein aggregation to better understand disease mechanisms and pathophysiology in different neurodegenerative disorders, using FTIR, circular dichroism, and molecular dynamics simulations.</p>
-      </div>
-      <div class="card">
-        <h3>Research Assistant — Integrative Genomics Lab, VIT</h3>
-        <small>November 2024 – Present</small>
-        <p>Bioinformatics-based studies on to identify and classify variants of uncertain significance (VUS), predicting pathogenicity and informing further molecular investigations</p>
-      </div>
-     
+    <section id="work-experience">
+      <h2>Work Experience</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Role / Institution</th>
+            <th>Details</th>
+            <th>Duration</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <img src="https://placehold.co/100x100/d9d1e2/5f5d58?text=SRMC" alt="SRMC Logo" class="logo"><br>
+              Sri Ramachandra Medical College and Research Institute.<br><br>
+              <strong>Summer Intern</strong>
+            </td>
+            <td>
+              <ul>
+                <li><b>Pediatric Hemato-Oncology:</b> Rotated with physicians, interacted with patients, took medical histories, and discussed management for childhood cancers.</li>
+                <li><b>Child Developmental Unit:</b> Observed family history-taking for neuropsychiatric disorders (Autism, Fragile X, ADHD).</li>
+                <li><b>Fetal–Maternal Unit:</b> Observed ultrasounds, anomaly scans, and amniocentesis, learning about high-risk pregnancy management.</li>
+                <li><b>Genetic and Metabolic Clinic:</b> Learned in-depth genetic counseling, interpreted test results for neonates, and observed NICU protocols.</li>
+                <li><b>Genetic Diagnostic Laboratory:</b> Performed hands-on genetic testing including blood culture, FISH, DNA isolation, PCR, and karyotyping.</li>
+              </ul>
+            </td>
+            <td>May 2025 - July 2025</td>
+          </tr>
+        </tbody>
+      </table>
     </section>
-      <div class="card">
-        <h3>Research Assistant — Immunopathology Lab, VIT</h3>
-        <small>July 2024 - November 2024</small>
-        <p>Experienced in handling and performing procedures on rats and mice with strict adherence to ethical standards. Skilled in molecular and histological techniques, including immunohistochemistry and western blotting, to analyze protein expression and localize antigens in tissue samples.</p>
-      </div>
+
+    <section id="research-experience">
+        <h2>Research Experience</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Role / Institution</th>
+              <th>Details</th>
+              <th>Duration</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <img src="https://placehold.co/100x100/d9d1e2/5f5d58?text=VIT" alt="VIT Logo" class="logo"><br>
+                Centre for Bio-Separation & Technology, VIT<br><br>
+                <strong>Research Assistant</strong>
+              </td>
+              <td>Studying protein aggregation to better understand disease mechanisms and pathophysiology in different neurodegenerative disorders, using FTIR, circular dichroism, and molecular dynamics simulations.</td>
+              <td>July 2025 – Present</td>
+            </tr>
+            <tr>
+              <td>
+                <img src="https://placehold.co/100x100/d9d1e2/5f5d58?text=VIT" alt="VIT Logo" class="logo"><br>
+                Integrative Genomics Lab, VIT<br><br>
+                <strong>Research Assistant</strong>
+              </td>
+              <td>Bioinformatics-based studies to identify and classify variants of uncertain significance (VUS), predicting pathogenicity and informing further molecular investigations.</td>
+              <td>Nov 2024 – Present</td>
+            </tr>
+            <tr>
+              <td>
+                <img src="https://placehold.co/100x100/d9d1e2/5f5d58?text=VIT" alt="VIT Logo" class="logo"><br>
+                Immunopathology Lab, VIT<br><br>
+                <strong>Research Assistant</strong>
+              </td>
+              <td>Experienced in handling and performing procedures on rats and mice with strict adherence to ethical standards. Skilled in molecular and histological techniques, including immunohistochemistry and western blotting.</td>
+              <td>July 2024 - Nov 2024</td>
+            </tr>
+          </tbody>
+        </table>
       </section>
-     
 
     <section id="education">
       <h2>Education</h2>
-      <ul>
-        <li><strong>2024–2026</strong> — <b>M.Sc. Biomedical Genetics,</b> Vellore Institute of Technology, Vellore</li>
-        <li><strong>2021–2024</strong> — <b>B.Sc. Biotechnology, Zoology, Chemistry, </b>St Francis College for Women, Hyderabad.</li>
-        <li><strong>2007–2021</strong> — <b>Physics, Chemistry, Biology, English </b> Delhi Public School, R.K.Puram, Delhi. </li>
-      </ul>
+      <table>
+        <thead>
+          <tr>
+            <th>University / School</th>
+            <th>Degree / Field</th>
+            <th>Duration</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><img src="https://placehold.co/100x100/d9d1e2/5f5d58?text=VIT" alt="VIT Logo" class="logo">Vellore Institute of Technology, Vellore</td>
+            <td>M.Sc. Biomedical Genetics</td>
+            <td>2024–2026</td>
+          </tr>
+          <tr>
+            <td><img src="https://placehold.co/100x100/d9d1e2/5f5d58?text=SFCW" alt="St Francis Logo" class="logo">St Francis College for Women, Hyderabad</td>
+            <td>B.Sc. Biotechnology, Zoology, Chemistry</td>
+            <td>2021–2024</td>
+          </tr>
+          <tr>
+            <td><img src="https://placehold.co/100x100/d9d1e2/5f5d58?text=DPS" alt="DPS Logo" class="logo">Delhi Public School, R.K.Puram, Delhi</td>
+            <td>High School (Physics, Chemistry, Biology)</td>
+            <td>2007–2021</td>
+          </tr>
+        </tbody>
+      </table>
     </section>
 
     <section id="skills">
@@ -220,16 +332,9 @@ peripheral and cord blood culture, peripheral blood harvest, fluorescence in sit
 
   <footer>
     <h2>Research Interests</h2>
-    <p>Pediatric Neurology</p>
-    <p>Neurogenetics</p>
-    <p>Neurodegenerative Research</p>
+    <p>Pediatric Neurology · Neurogenetics · Neurodegenerative Research</p>
     <h2>Languages</h2>
-    <p>English</p>
-    <p>Hindi</p>
-    <p>Malayalam</p>
-    <p>Spanish</p>
-    <p>French</p>
-    <p>German</p>
+    <p>English · Hindi · Malayalam · Spanish · French · German</p>
   </footer>
 </body>
 </html>
