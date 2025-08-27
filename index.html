@@ -36,6 +36,7 @@
     nav {
       background-color: #f7f4ef;
       display: flex;
+      flex-wrap: wrap;
       justify-content: center;
       gap: 1.5rem;
       padding: 1rem;
@@ -69,6 +70,11 @@
       padding-bottom: 0.3rem;
       margin-bottom: 1.5rem;
     }
+    h4 {
+        color: #5f5d58;
+        margin-top: 1rem;
+        margin-bottom: 0.5rem;
+    }
 
     /* Table Styles */
     table {
@@ -99,16 +105,6 @@
     table tr:hover {
       background-color: #f7f4ef;
     }
-    table img.logo {
-      width: 45px;
-      height: 45px;
-      object-fit: contain;
-      border-radius: 8px;
-      vertical-align: middle;
-      margin-right: 12px;
-      background: white;
-      padding: 2px;
-    }
     table td ul {
       padding-left: 20px;
       margin-top: 0;
@@ -116,28 +112,14 @@
     table td ul li {
       margin-bottom: 0.5rem;
     }
-
-    /* Button and Card Styles */
-    .btn {
-      display: inline-block;
-      background-color: #d9d1e2;
-      padding: 0.6rem 1.2rem;
-      margin: 0.5rem 0;
-      text-decoration: none;
-      color: #5f5d58;
-      border-radius: 6px;
-      font-weight: bold;
-      transition: background-color 0.3s ease;
+    
+    /* Lists */
+    ul.membership-list {
+        list-style-type: disc;
+        padding-left: 20px;
     }
-    .btn:hover {
-        background-color: #c8bdd9;
-    }
-    .card {
-      background-color: #f7f4ef;
-      padding: 1rem;
-      margin-bottom: 1rem;
-      border-radius: 6px;
-      border-left: 4px solid #d9d1e2;
+    ul.membership-list li {
+        margin-bottom: 0.5rem;
     }
 
     /* Footer Styles */
@@ -157,26 +139,26 @@
 
     /* Responsive Design */
     @media(max-width: 768px) {
-        table, thead, tbody, th, td, tr {
+        .responsive-table, .responsive-table thead, .responsive-table tbody, .responsive-table th, .responsive-table td, .responsive-table tr {
             display: block;
         }
-        thead tr {
+        .responsive-table thead tr {
             position: absolute;
             top: -9999px;
             left: -9999px;
         }
-        tr {
+        .responsive-table tr {
             margin-bottom: 1rem;
             border: 1px solid #d9d1e2;
             border-radius: 8px;
         }
-        td {
+        .responsive-table td {
             border: none;
             border-bottom: 1px solid #f0e9e1;
             position: relative;
             padding-left: 50%;
         }
-        td:before {
+        .responsive-table td:before {
             position: absolute;
             top: 15px;
             left: 15px;
@@ -186,9 +168,17 @@
             font-weight: bold;
         }
         /* Labeling the cells for mobile view */
-        td:nth-of-type(1):before { content: "Institution"; }
-        td:nth-of-type(2):before { content: "Details"; }
-        td:nth-of-type(3):before { content: "Duration"; }
+        #work-experience td:nth-of-type(1):before, #research-experience td:nth-of-type(1):before { content: "Institution"; }
+        #work-experience td:nth-of-type(2):before, #research-experience td:nth-of-type(2):before { content: "Details"; }
+        #work-experience td:nth-of-type(3):before, #research-experience td:nth-of-type(3):before { content: "Duration"; }
+        #education td:nth-of-type(1):before { content: "School"; }
+        #education td:nth-of-type(2):before { content: "Degree"; }
+        #education td:nth-of-type(3):before { content: "Duration"; }
+        #awards td:nth-of-type(1):before { content: "Award"; }
+        #awards td:nth-of-type(2):before { content: "Institution"; }
+        #certifications td:nth-of-type(1):before { content: "Course"; }
+        #certifications td:nth-of-type(2):before { content: "Organization"; }
+        #certifications td:nth-of-type(3):before { content: "Type"; }
     }
   </style>
 </head>
@@ -203,7 +193,10 @@
     <a href="#work-experience">Work</a>
     <a href="#research-experience">Research</a>
     <a href="#education">Education</a>
+    <a href="#awards">Awards</a>
     <a href="#skills">Skills</a>
+    <a href="#certifications">Certifications</a>
+    <a href="#memberships">Memberships</a>
     <a href="#contact">Contact</a>
   </nav>
 
@@ -211,12 +204,11 @@
     <section id="about">
       <h2>About Me</h2>
       <p>Master’s student in Biomedical Genetics specializing in Genetic Counseling, consistently ranking among the top performers throughout undergraduate and postgraduate studies. Strong foundation in human genetics, molecular biology, and genomics, with research focused on neurogenetics and protein aggregation. Skilled in variant interpretation, risk assessment, and patient-facing clinical rotations, with expertise in bioinformatics and biophysical approaches. Committed to integrating molecular, computational, and clinical perspectives within an interdisciplinary framework to advance neuroscience research and improve care for neurological and pediatric disorders.</p>
-      <a href="MaryThomas_CV.pdf" download class="btn">Download CV</a>
     </section>
 
     <section id="work-experience">
       <h2>Work Experience</h2>
-      <table>
+      <table class="responsive-table">
         <thead>
           <tr>
             <th>Role / Institution</th>
@@ -227,7 +219,6 @@
         <tbody>
           <tr>
             <td>
-              <img src=srmc.jpg"SRMC Logo" class="logo"><br>
               Sri Ramachandra Medical College and Research Institute.<br><br>
               <strong>Summer Intern</strong>
             </td>
@@ -248,7 +239,7 @@
 
     <section id="research-experience">
         <h2>Research Experience</h2>
-        <table>
+        <table class="responsive-table">
           <thead>
             <tr>
               <th>Role / Institution</th>
@@ -259,7 +250,7 @@
           <tbody>
             <tr>
               <td>
-                                Centre for Bio-Separation & Technology, VIT<br><br>
+                Centre for Bio-Separation & Technology, VIT<br><br>
                 <strong>Research Assistant</strong>
               </td>
               <td>Studying protein aggregation to better understand disease mechanisms and pathophysiology in different neurodegenerative disorders, using FTIR, circular dichroism, and molecular dynamics simulations.</td>
@@ -267,7 +258,7 @@
             </tr>
             <tr>
               <td>
-                                Integrative Genomics Lab, VIT<br><br>
+                Integrative Genomics Lab, VIT<br><br>
                 <strong>Research Assistant</strong>
               </td>
               <td>Bioinformatics-based studies to identify and classify variants of uncertain significance (VUS), predicting pathogenicity and informing further molecular investigations.</td>
@@ -275,7 +266,7 @@
             </tr>
             <tr>
               <td>
-                                Immunopathology Lab, VIT<br><br>
+                Immunopathology Lab, VIT<br><br>
                 <strong>Research Assistant</strong>
               </td>
               <td>Experienced in handling and performing procedures on rats and mice with strict adherence to ethical standards. Skilled in molecular and histological techniques, including immunohistochemistry and western blotting.</td>
@@ -287,7 +278,7 @@
 
     <section id="education">
       <h2>Education</h2>
-      <table>
+      <table class="responsive-table">
         <thead>
           <tr>
             <th>University / School</th>
@@ -296,7 +287,8 @@
           </tr>
         </thead>
         <tbody>
-          <tr><td>Vellore Institute of Technology, Vellore</td>
+          <tr>
+            <td>Vellore Institute of Technology, Vellore</td>
             <td>M.Sc. Biomedical Genetics</td>
             <td>2024–2026</td>
           </tr>
@@ -307,17 +299,109 @@
           </tr>
           <tr>
             <td>Delhi Public School, R.K.Puram, Delhi</td>
-            <td>High School Diploma (2018-2020) (Physics, Chemistry, Biology)</td>
-            <td>2006–2020</td>
+            <td>High School (Physics, Chemistry, Biology)</td>
+            <td>2007–2021</td>
           </tr>
         </tbody>
       </table>
     </section>
+    
+    <section id="awards">
+        <h2>Awards & Honors</h2>
+        <table class="responsive-table">
+          <thead>
+            <tr>
+              <th>Award</th>
+              <th>Institution</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Merit Scholarship for Academic Excellence</td>
+              <td>Vellore Institute of Technology, Vellore</td>
+            </tr>
+            <tr>
+              <td>Gold Medal – Proficiency Prize for 1st Rank</td>
+              <td>St. Francis College for Women, Hyderabad</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
 
     <section id="skills">
       <h2>Skills</h2>
-      <p>Genetic Counseling, Protein Aggregation Studies, Bioinformatics, Fluorescence in situ Hybridization (FISH), Molecular Dynamics Simulations(MDS), Immunohistochemistry (IHC), Western Blotting, FTIR, Karyotyping (iKaros).</p>
+      <h4>Laboratory Techniques</h4>
+      <p>FTIR, CD, Rayleigh, Karyotyping, Fluorescence in situ Hybridization (FISH), Microscopy, DNA extraction, Agarose gel electrophoresis, Haemocytometer, Animal cell culture, Protein aggregation assays, Immunohistochemistry (IHC), Western blotting.</p>
+      <h4>Molecular & Computational Tools</h4>
+      <p>Modeller, Discovery Studio, PyRx, Molecular Dynamics Simulations, Bioinformatics pipelines, Variant classification databases.</p>
+      <h4>Analytical & Research Skills</h4>
+      <p>Scientific writing and communication, Experimental documentation, Data handling and interpretation, Literature review, Problem-solving, Attention to detail.</p>
+      <h4>Clinical Skills</h4>
+      <p>Patient communication, Genetic counseling observation, Family history collection, Developmental assessment observation.</p>
+      <h4>Software & Productivity Tools</h4>
+      <p>Microsoft Office Suite (Word, Excel, PowerPoint), Google Workspace (Docs, Sheets, Slides).</p>
+      <h4>Professional Attributes</h4>
+      <p>Adaptability, Teamwork, Time Management, Critical Thinking.</p>
     </section>
+
+    <section id="certifications">
+        <h2>Certifications</h2>
+        <table class="responsive-table">
+          <thead>
+            <tr>
+              <th>Course</th>
+              <th>Organization</th>
+              <th>Type</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+                <td>Animal Models of Parkinson’s Disease</td>
+                <td>International Parkinson & MDS</td>
+                <td>Online</td>
+            </tr>
+            <tr>
+                <td>The Science of Stem Cells</td>
+                <td>American Museum of Natural History, Coursera</td>
+                <td>Online</td>
+            </tr>
+            <tr>
+                <td>Understanding the Brain: Neurobiology of Everyday Life</td>
+                <td>University of Chicago, Coursera</td>
+                <td>Online</td>
+            </tr>
+            <tr>
+                <td>The Addicted Brain</td>
+                <td>Emory University, Coursera</td>
+                <td>Online</td>
+            </tr>
+            <tr>
+                <td>Microbiome and Genome Analysis</td>
+                <td>University of Hyderabad</td>
+                <td>Workshop</td>
+            </tr>
+            <tr>
+                <td>Homology Modelling and Molecular Docking</td>
+                <td>St. Francis College for Women</td>
+                <td>Workshop</td>
+            </tr>
+            <tr>
+                <td>rDNA Technology & Genetic Engineering using CRISPR</td>
+                <td>IIT Kharagpur</td>
+                <td>Online</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="memberships">
+        <h2>Networks and Memberships</h2>
+        <ul class="membership-list">
+            <li>Student Member of the Society for Experimental Biology and Medicine</li>
+            <li>Student Member of the International Parkinson and Movement Disorder Society</li>
+            <li>Student Member of the American Society of Clinical Oncology</li>
+        </ul>
+      </section>
 
     <section id="contact">
       <h2>Contact</h2>
